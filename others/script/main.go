@@ -19,11 +19,8 @@ func main() {
 		case "t":
 			rime.Temp()
 			return
-		case "p":
-			rime.CheckPolyphone(rime.BasePath)
-			return
 		case "tp":
-			rime.Pinyin(filepath.Join(rime.RimeDir, "cn_dicts/temp"))
+			rime.Pinyin(filepath.Join(rime.RimeDir, "cn_dicts/temp.txt"))
 			return
 		}
 	}
@@ -51,6 +48,11 @@ func main() {
 	rime.Check(rime.BasePath, 3)
 	rime.Check(rime.ExtPath, 3)
 	rime.Check(rime.TencentPath, 4)
+	fmt.Println("--------------------------------------------------")
+
+	// 检查同义多音字
+	rime.CheckPolyphone(rime.BasePath)
+	rime.CheckPolyphone(rime.ExtPath)
 	fmt.Println("--------------------------------------------------")
 
 	areYouOK()
